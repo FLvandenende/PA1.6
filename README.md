@@ -34,3 +34,24 @@ The autograder checks the following aspects of your work for each push to GitHub
 This assignment is due on 10:45, Wednesday, October 7, 2026.
 
 > By Tom van Woudenberg and Stanislaw Ostyk-Narbutt, Delft University of Technology. CC BY 4.0, more info [on the Credits page of Workbook](https://mude.citg.tudelft.nl/workbook-2026/credits.html).
+
+## Running a scenario
+
+Run a single simulation with:
+
+```sh
+python main.py --scenario scenarios/cold_morning.yaml
+```
+
+Run a Monte Carlo batch by specifying the number of trials:
+
+```sh
+python main.py --scenario scenarios/cold_morning.yaml --runs 100
+```
+
+Each trial uses a different reproducible random seed, starting at the seed in
+the scenario file. Monte Carlo runs write per-trial metrics and an aggregate
+summary under `outputs/logs/`. The summary reports the mean, standard deviation,
+and 5th and 95th percentiles for final room temperature, minimum and maximum
+temperature, mean absolute setpoint error, and heater duty fraction. Single
+runs continue to write a detailed time-series CSV and plots.
